@@ -42,7 +42,7 @@ export const updateBook = async (req, res, next) => {
     }
 }
 
-export const deleteBooks = async (req, res, next) => {
+export const deleteBook = async (req, res, next) => {
     try {
         //Validate user input
         //write todo to database
