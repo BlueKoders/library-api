@@ -7,7 +7,7 @@ const bookRouter = Router();
 
 
 // Define routes
-bookRouter.post('/books', addBook)
+bookRouter.post('/books', addBook);
 
 bookRouter.get('/books', getBooks);
 
