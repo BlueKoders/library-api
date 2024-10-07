@@ -19,7 +19,7 @@ app.use(cors());
 app.use(userRouter);
 
 //App listening
-const PORT = 3503
+const PORT = 3500
 app.listen(PORT, ()=>{
     console.log(`App is listening on ${PORT}`);
 })
