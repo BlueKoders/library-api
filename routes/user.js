@@ -7,9 +7,9 @@ import {register, login, logout } from "../controllers/user.js";
 const userRouter = Router();
 
 //Define routes
-userRouter.post("/user/register", register);
-userRouter.post("/user/login", login);
-userRouter.post("/user/logout", logout);
+userRouter.post("/register", register);
+userRouter.post("/login", login);
+userRouter.post("/logout", logout);
 
 //export the router userRouter
 export default userRouter;
