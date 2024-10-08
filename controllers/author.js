@@ -3,9 +3,8 @@ import { AuthorModel } from "../models/review.js";
 export const addAuthor = async (req, res, next) => {
     try {
         //Validate user input
-        //write todo to database
-        // Fetch review from database
-        const books = await BookModel.find();
+        // Fetch author from database
+        const author = await AuthorModel.find();
         //Respond to request
         res.status(201).json("Author Added successfully!");
     } catch (error) {
@@ -27,7 +26,7 @@ export const getAuthors = async (req, res, next) => {
 }
 export const getAuthor = async (req, res, next) => {
     try {
-        // Fetch review from database
+        // Fetch author from database
         const author = await AuthorModel.find();
         // Return response
         res.status(200).json(author);
@@ -55,7 +54,7 @@ export const updateAuthor = async (req, res, next) => {
 
 export const deleteAuthor = async (req, res, next) => {
     try {
-        // Extract review ID from request parameters
+        // Extract author ID from request parameters
         const { id } = req.params;
         // Find and delete the author by ID
         const deleteAuthor = await ReviewModel.findByIdAndDelete(id);
