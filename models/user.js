@@ -3,8 +3,9 @@ import { Schema, model, Types } from "mongoose";
 const userSchema = new Schema({
     firstName: {type: String, required: true},
     lastName: {type: String, required: true},
-    userName: {type: String},
-    passWord: {type: String}
+    email: {type: String, required: true, unique: true},
+    passWord: {type: String},
+   country: {type: String}
 });
 
 export const userModel = model('Review', userSchema);
