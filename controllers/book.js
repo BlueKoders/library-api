@@ -16,8 +16,7 @@ export const getBooks = async (req, res, next) => {
         // Return response
         res.status(200).json(books);
     } catch (error) {
-        next(error)
-
+        next(error);
     }
 }
 
@@ -28,8 +27,7 @@ export const getBook = async (req, res, next) => {
         // Return response
         res.status(200).json(book);
     } catch (error) {
-        next(error)
-
+        next(error);
     }
 }
 

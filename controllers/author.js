@@ -2,6 +2,8 @@ export const addAuthor = async (req, res, next) => {
     try {
         //Validate user input
         //write todo to database
+        // Fetch review from database
+        const books = await BookModel.find();
         //Respond to request
         res.status(201).json("Author Added successfully!");
     } catch (error) {
