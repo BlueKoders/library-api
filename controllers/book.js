@@ -1,3 +1,5 @@
+import { BookModel } from "../models/book.js";
+
 export const addBook = async (req, res, next) => {
     try {
         //Validate user input
@@ -11,7 +13,7 @@ export const addBook = async (req, res, next) => {
 
 export const getBooks = async (req, res, next) => {
     try {
-        // Fetch review from database
+        // Fetch books from database
         const books = await BookModel.find();
         // Return response
         res.status(200).json(books);
@@ -23,7 +25,7 @@ export const getBooks = async (req, res, next) => {
 
 export const getBook = async (req, res, next) => {
     try {
-        // Fetch review from database
+        // Fetch book from database
         const book = await BookModel.find();
         // Return response
         res.status(200).json(book);
