@@ -48,10 +48,7 @@ export const updateReview = async (req, res, next) => {
         const updatedData = req.body;
         // Find the review by ID and update it with the new data
         const updatedReview = await ReviewModel.findByIdAndUpdate(id, updatedData, { new: true });
-        // If no review is found, send a 404 response
-        if (!updatedReview) {
-            return res.status(404).json({ message: "Review not found" });
-        }
+      
         // Send the updated review as a response
         res.status(200).json(updatedReview);
     } catch (error) {
@@ -67,10 +64,7 @@ export const deleteReview = async (req, res, next) => {
         const { id } = req.params;
         // Find and delete the review by ID
         const deletedReview = await ReviewModel.findByIdAndDelete(id);
-        // If no review is found, send a 404 response
-        if (!deletedReview) {
-            return res.status(404).json({ message: "Review not found" });
-        }
+
         // Send success response
         res.status(200).json({ message: "Review deleted successfully" });
     } catch (error) {
