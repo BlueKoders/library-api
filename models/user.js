@@ -4,8 +4,7 @@ const userSchema = new Schema({
     firstName: {type: String, required: true},
     lastName: {type: String, required: true},
     userName: {type: String},
-    passWord: {type:}
+    passWord: {type: String}
 });
-
 
 export const userModel = model('Review', userSchema);
