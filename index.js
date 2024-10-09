@@ -6,9 +6,9 @@ import cors from 'cors';
 
 //internal import
 import userRouter from './routes/user.js';
-import bookRouter from './routes/user.js';
-import authorRouter from './routes/user.js';
-import reviewRouter from './routes/user.js';
+import bookRouter from './routes/book.js';
+import authorRouter from './routes/author.js';
+import reviewRouter from './routes/review.js';
 
 
 //connect mongodb 
@@ -18,7 +18,7 @@ await mongoose.connect(process.env.MONGO_URI);
 const app = express();
 
 //Add middlewares
-app.use(express.json()) 
+app.use(express.json())
 app.use(cors());
 
 
@@ -30,6 +30,6 @@ app.use(reviewRouter);
 
 //App listening
 const PORT = 3500
-app.listen(PORT, ()=>{
+app.listen(PORT, () => {
     console.log(`App is listening on ${PORT}`);
 })
