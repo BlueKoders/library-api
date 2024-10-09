@@ -64,7 +64,6 @@ export const deleteReview = async (req, res, next) => {
         const { id } = req.params;
         // Find and delete the review by ID
         const deletedReview = await ReviewModel.findByIdAndDelete(id);
-
         // Send success response
         res.status(200).json({ message: "Review deleted successfully" });
     } catch (error) {

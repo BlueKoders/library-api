@@ -9,6 +9,7 @@ import userRouter from './routes/user.js';
 import bookRouter from './routes/book.js';
 import authorRouter from './routes/author.js';
 import reviewRouter from './routes/review.js';
+import { addBookValidator } from './validators/book.js';
 
 
 //connect mongodb 
@@ -20,7 +21,6 @@ const app = express();
 //Add middlewares
 app.use(express.json())
 app.use(cors());
-
 
 //use routes
 app.use(userRouter);

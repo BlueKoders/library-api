@@ -8,7 +8,7 @@ const authorRouter = Router();
 authorRouter.post("/author",addAuthor);
 authorRouter.get("/author", getAuthors);
 authorRouter.get("/author/:id", getAuthor);
-authorRouter.update("/author/:id", updateAuthor);
+authorRouter.patch("/author/:id", updateAuthor);
 authorRouter.delete("/author/:id", deleteAuthor);
 
 export default authorRouter;
