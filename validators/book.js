@@ -1,3 +1,4 @@
+/*
 import Joi from "joi";
 
 export const addBookValidator = Joi.object({
@@ -7,3 +8,4 @@ export const addBookValidator = Joi.object({
     cover:Joi.string(),
     content:Joi.string().required()
 })
+*/
