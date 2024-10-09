@@ -1,8 +1,13 @@
 import { BookModel } from "../models/book.js";
+import { addBookValidator } from "../validators/book.js";
 
 export const addBook = async (req, res, next) => {
     try {
         //Validate user input
+        const {error, value}= addBookValidator.validate(req.body);
+        if (error){
+            return res.status(422).json(error);
+        }
         //write todo to database
         //Respond to request
         res.status(201).json("Book Added successfully!");
