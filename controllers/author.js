@@ -4,9 +4,9 @@ export const addAuthor = async (req, res, next) => {
     try {
         //Validate user input
         // Fetch author from database
-        const author = await AuthorModel.find();
+        const author = await AuthorModel.create(req.body);
         //Respond to request
-        res.status(201).json(author);
+        res.status(201).json(`AUTHOR:${author.name} Added Successfully`);
     } catch (error) {
         next(error);
     }

@@ -4,10 +4,10 @@ import { addBookValidator } from "../validators/book.js";
 export const addBook = async (req, res, next) => {
     try {
         //Validate user input
-        
         //Add books to database
+        const postRes = await BookModel.create(req.body);
         //Respond to request
-        res.status(201).json("Book Added successfully!");
+        res.status(201).json(postRes);
     } catch (error) {
         next(error);
     }
@@ -18,7 +18,7 @@ export const getBooks = async (req, res, next) => {
         // Fetch books from database
         const books = await BookModel.find();
         // Return response
-        res.status(200).json("Books successfully retrived");
+        res.status(200).json(books);
     } catch (error) {
         next(error);
     }
