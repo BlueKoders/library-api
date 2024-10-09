@@ -1,4 +1,4 @@
-import {AuthorModel} from "../models/review.js";
+import { AuthorModel } from "../models/author.js";
 
 export const addAuthor = async (req, res, next) => {
     try {
