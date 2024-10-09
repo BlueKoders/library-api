@@ -4,6 +4,7 @@ export const addBook = async (req, res, next) => {
     try {
         //Validate user input
         //write todo to database
+        
         //Respond to request
         res.status(201).json("Book Added successfully!");
     } catch (error) {
