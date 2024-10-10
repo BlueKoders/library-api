@@ -1,12 +1,17 @@
 import { AuthorModel } from "../models/author.js";
+import { addAuthorValidator, updateAuthorValidator } from "../validators/author.js";
 
 export const addAuthor = async (req, res, next) => {
     try {
         //Validate user input
+         const {error, value} = addAuthorValidator.validate(req.body);
+         if (error) {
+            return res.status(422).res.json(error)
+         }
         // Fetch author from database
-        const author = await AuthorModel.create(req.body);
+        const author = await AuthorModel.create(value);
         //Respond to request
-        res.status(201).json(`AUTHOR:${author.name} Added Successfully`);
+        res.status(201).json(`AUTHOR: '${author.name}' Added Successfully`);
     } catch (error) {
         next(error);
     }
@@ -45,7 +50,7 @@ export const updateAuthor = async (req, res, next) => {
         // Find the author by ID and update it with the new data
         const updatedAuthor = await AuthorModel.findByIdAndUpdate(id, updatedData, { new: true });
         // Send the updated author as a response
-        res.status(200).json(updateAuthor);
+        res.status(200).json(`${updatedAuthor.name} Info Updated`);
     } catch (error) {
         next(error);
     }
