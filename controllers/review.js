@@ -1,15 +1,20 @@
 import { ReviewModel } from "../models/review.js";
+import { addReviewValidator } from "../validators/review.js";
+import { updateReviewValidator } from "../validators/review.js";
 
 export const addReview = async (req, res, next) => {
     try {
         //  Validate user inputs
+        const {error, value} = addReviewValidator.validate(req.body);
+        if (error) {
+             return res.status(422).res.json(error)
+        }
         //  Write review to database
-        await ReviewModel.create(req.body);
+        const postReviewRes = await ReviewModel.create(value);
         //  Respond to request
-        res.status(201).json('Review was added!');
+        res.status(201).json(`You rated the book ${postReviewRes.rating} stars`);
     } catch (error) {
         next(error)
-
     }
 }
 

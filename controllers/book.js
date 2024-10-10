@@ -1,18 +1,18 @@
 import { BookModel } from "../models/book.js";
-// import { addBookValidator } from "../validators/book.js";   //commented out to fix error
+import { addBookValidator } from "../validators/book.js";
+import { updateBookValidator } from "../validators/book.js";
 
 export const addBook = async (req, res, next) => {
     try {
         //Validate user input
-        // const {error, value}= addBookValidator.validate(req.body);
-        // if (error){
-        //     return res.status(422).json(error);
-        // }
-
+         const {error, value} = addBookValidator.validate(req.body);
+         if (error) {
+            return res.status(422).json(error);
+         }
         //Add books to database
-        const postRes = await BookModel.create(req.body);
+        const postBookRes = await BookModel.create(value);
         //Respond to request
-        res.status(201).json(`You have added '${postRes.title}' to your library`);
+        res.status(201).json(`You have added '${postBookRes.title}' to your library`);
     } catch (error) {
         next(error);
     }
@@ -21,7 +21,7 @@ export const addBook = async (req, res, next) => {
 export const getBooks = async (req, res, next) => {
     try {
         // Fetch books from database
-        const books = await BookModel.find();
+        const books = await BookModel.find().populate('author');
         // Return response
         res.status(200).json(books);
     } catch (error) {
@@ -32,7 +32,7 @@ export const getBooks = async (req, res, next) => {
 export const getBook = async (req, res, next) => {
     try {
         // Fetch book from database
-        const book = await BookModel.find();
+        const book = await BookModel.find().populate('author');
         // Return response
         res.status(200).json(`You have successfully retrieved`);
     } catch (error) {
@@ -44,9 +44,14 @@ export const getBook = async (req, res, next) => {
 export const updateBook = async (req, res, next) => {
     try {
         //Validate user input
-        //write todo to database
+         const {error, value} = updateBookValidator.validate(req.body);
+         if (error) {
+            return res.status(422).json(error);
+         }
+        //Update book in database
+        const updateBookRes = await BookModel.findByIdAndUpdate(postId, value, { new: true });
         //Respond to request
-        res.status(200).json("Book Info Updated!");
+        res.status(200).json(`Update Successful`);
     } catch (error) {
         next(error);
     }

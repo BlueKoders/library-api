@@ -1,9 +1,10 @@
 import Joi from "joi";
 
 export const addAuthorValidator = Joi.object({
-    title:Joi.string().required(),
-    summary:Joi.string().required(),
-    author:Joi.string().required(),
-    cover:Joi.string(),
-    content:Joi.string().required()
+   name:Joi.string().required(),
+    bio:Joi.string().required().min(10).max(500),
+})
+export const updateAuthorValidator = Joi.object({
+   name:Joi.string(),
+    bio:Joi.string().min(10).max(500),
 })
