@@ -1,12 +1,18 @@
 import { BookModel } from "../models/book.js";
+// import { addBookValidator } from "../validators/book.js";   //commented out to fix error
 
 export const addBook = async (req, res, next) => {
     try {
         //Validate user input
-        //write todo to database
-        
+        // const {error, value}= addBookValidator.validate(req.body);
+        // if (error){
+        //     return res.status(422).json(error);
+        // }
+
+        //Add books to database
+        const postRes = await BookModel.create(req.body);
         //Respond to request
-        res.status(201).json("Book Added successfully!");
+        res.status(201).json(`You have added '${postRes.title}' to your library`);
     } catch (error) {
         next(error);
     }
@@ -28,7 +34,7 @@ export const getBook = async (req, res, next) => {
         // Fetch book from database
         const book = await BookModel.find();
         // Return response
-        res.status(200).json(book);
+        res.status(200).json(`You have successfully retrieved`);
     } catch (error) {
         next(error);
     }
@@ -40,7 +46,7 @@ export const updateBook = async (req, res, next) => {
         //Validate user input
         //write todo to database
         //Respond to request
-        res.status(200).json("Book updated!");
+        res.status(200).json("Book Info Updated!");
     } catch (error) {
         next(error);
     }
@@ -58,5 +64,3 @@ export const deleteBook = async (req, res, next) => {
         next(error);
     }
 };
-
-
