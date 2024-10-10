@@ -64,5 +64,3 @@ export const deleteBook = async (req, res, next) => {
         next(error);
     }
 };
-
-
