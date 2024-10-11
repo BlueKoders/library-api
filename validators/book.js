@@ -5,7 +5,7 @@ export const addBookValidator = Joi.object({
     summary:Joi.string().required().min(20).max(1000),
     author:Joi.string().required(),
     publisher:Joi.string().required(),
-    publishDate: Joi.date(),
+    publishDate: Joi.string(),
     numberOfPages: Joi.number().integer().greater(1),
     cover: Joi.string().required(),
     content:Joi.string().required()
