@@ -34,7 +34,7 @@ export const getBook = async (req, res, next) => {
         // Fetch book from database
         const book = await BookModel.find().populate('author');
         // Return response
-        res.status(200).json(`You have successfully retrieved`);
+        res.status(200).json(book);
     } catch (error) {
         next(error);
     }
