@@ -1,9 +1,15 @@
-//User authentication controllers
+//User validation import
+import { addUserValidator, updateUserValidator } from "../validators/user.js";
 
 //Register 
  export const register = (req, res, next) => {
 try {
-        //Respondse to register request
+    //User =Validation
+    const {error} = addUserValidator.validate(req.body);
+    if (error){
+        return res.status(422).res.json
+    }
+        //Response to register request
         res.status(201).json("Thanks for registering! We've reserved your space!")
 } catch (error) {
     next(error);

@@ -7,7 +7,7 @@ const bookSchema = new Schema({
     summary: {type: String},
     author: {type: Types.ObjectId, ref: 'Author'},
     publisher: {type: String},
-    publishDate: {type: Date},
+    publishDate: {type: String},
     numberOfPages: {type: Number},
     cover: {type: String, required: false},
     content: {type: String, required:true},
