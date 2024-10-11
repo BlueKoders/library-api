@@ -49,9 +49,9 @@ export const updateBook = async (req, res, next) => {
             return res.status(422).json(error);
          }
         //Update book in database
-        const updateBookRes = await BookModel.findByIdAndUpdate(postId, value, { new: true });
+        const updateBookRes = await BookModel.updateOne(value);
         //Respond to request
-        res.status(200).json(`Update Successful`);
+        res.status(200).json(`You have Successfully Updated: '${value.title}'`);
     } catch (error) {
         next(error);
     }
@@ -59,12 +59,12 @@ export const updateBook = async (req, res, next) => {
 
 export const deleteBook = async (req, res, next) => {
     try {
-        // Extract review ID from request parameters
+        // Extract book ID from request parameters
         const { id } = req.params;
         // Find and delete the book by ID
-        const deletedBook = await ReviewModel.findByIdAndDelete(id);
+        const deletedBook = await BookModel.deleteOne( );
         // Send success response
-        res.status(200).json({ message: "Book deleted successfully" });
+        res.status(200).json(`You have deleted: ${req.body.title}`);
     } catch (error) {
         next(error);
     }
