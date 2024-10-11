@@ -7,4 +7,4 @@ export const addAuthorValidator = Joi.object({
 export const updateAuthorValidator = Joi.object({
    name:Joi.string(),
     bio:Joi.string().min(10).max(500),
-})
+}) 
